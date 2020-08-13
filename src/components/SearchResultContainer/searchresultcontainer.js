@@ -20,6 +20,7 @@ class  SearchResultContainer extends Component {
     searchUsers= query =>{
         API.search(query)
         .then(res=>this.setState({results:res.data.results}))
+      
         .catch(err=> console.log(err))
     }
 
@@ -32,33 +33,13 @@ class  SearchResultContainer extends Component {
         })
     }
 
-    sortAtoZ =()=>{
-        this.setState.sort()
-    }
-    sortZtoA = ()=>{
+    // sortAtoZ =()=>{
+    //     this.setState.sort()
+    // }
+    // sortZtoA = ()=>{
        
-        this.setState.sort()
+    //     this.setState.sort()
         
-    }
-    // sortName = () =>{
-        
-    //     if (this.state.sortDesc === true) {   
-    //         this.setState({results:this.state.results.sort((a,b) => {
-    //             if(a.name.last < b.name.last){
-    //                 return 1
-    //             } else {
-    //                 return -1
-    //             }
-    //         })})
-    //     } else {
-    //         this.setState({results:this.state.results.sort((a,b) => {
-    //             if(a.name.last > b.name.last){
-    //                 return 1
-    //             } else {
-    //                 return -1
-    //             }
-    //         })})
-    //     }
     // }
 
     render(){
@@ -67,12 +48,15 @@ class  SearchResultContainer extends Component {
             <div>
                 <SearchForm
                     search={this.state.search}
-                    handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
                 
                 />
-                <button className="btn btn-primary">sort a-z</button>
-                <button className="btn btn-primary">sort z-a</button>
+                <button className="btn btn-primary" 
+                // onClick={this.sortAtoZ()}
+                >sort a-z</button>
+                <button className="btn btn-primary" 
+                // onClick={this.sortZtoA()}
+                >sort z-a</button>
                 <ResultDirectory results={this.state.results}/>
                 
             </div>
