@@ -8,7 +8,8 @@ import { render } from '@testing-library/react';
 class  SearchResultContainer extends Component {
     state={
         search: "",
-        results: []
+        results: [],
+        ab: true
     }
 
     componentDidMount(){
@@ -31,11 +32,28 @@ class  SearchResultContainer extends Component {
         })
     }
 
-    handleFormSubmit = event =>{
-        event.preventDefault();
-        this.searchUsers(this.state.search)
+    sortName = () =>{
+        this.setState({ab:!this.state.ab});
+        if (this.state.ab === true) {   
+            this.setState({results:this.state.results.sort((a,b) => {
+                if(a.name.last < b.name.last){
+                    return 1
+                } else {
+                    return -1
+                }
+            })})
+        } else {
+            this.setState({results:this.state.results.sort((a,b) => {
+                if(a.name.last > b.name.last){
+                    return 1
+                } else {
+                    return -1
+                }
+            })})
+        }
     }
     render(){
+        
         return (
             <div>
                 <SearchForm

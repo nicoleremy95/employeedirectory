@@ -1,0 +1,33 @@
+table{
+    border: 1px solid black;
+    margin: 5px
+    
+}
+
+td {
+   
+    border: 1px solid black;
+}
+
+.picture-user{
+    width: 100px
+}
+
+.headers-first{
+    width: 200px;
+    border: 1px solid black;
+}
+
+.headers-last{
+    width:200px;
+    border: 1px solid black;
+}
+.headers-location{
+    width: 300px;
+    border: 1px solid black;
+}
+
+.headers-email{
+    width: 400px;
+    border: 1px solid black;
+}
