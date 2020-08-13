@@ -9,7 +9,7 @@ class  SearchResultContainer extends Component {
     state={
         search: "",
         results: [],
-        ab: true
+        sortDesc: true
     }
 
     componentDidMount(){
@@ -32,26 +32,35 @@ class  SearchResultContainer extends Component {
         })
     }
 
-    sortName = () =>{
-        this.setState({ab:!this.state.ab});
-        if (this.state.ab === true) {   
-            this.setState({results:this.state.results.sort((a,b) => {
-                if(a.name.last < b.name.last){
-                    return 1
-                } else {
-                    return -1
-                }
-            })})
-        } else {
-            this.setState({results:this.state.results.sort((a,b) => {
-                if(a.name.last > b.name.last){
-                    return 1
-                } else {
-                    return -1
-                }
-            })})
-        }
+    sortAtoZ =()=>{
+        this.setState.sort()
     }
+    sortZtoA = ()=>{
+       
+        this.setState.sort()
+        
+    }
+    // sortName = () =>{
+        
+    //     if (this.state.sortDesc === true) {   
+    //         this.setState({results:this.state.results.sort((a,b) => {
+    //             if(a.name.last < b.name.last){
+    //                 return 1
+    //             } else {
+    //                 return -1
+    //             }
+    //         })})
+    //     } else {
+    //         this.setState({results:this.state.results.sort((a,b) => {
+    //             if(a.name.last > b.name.last){
+    //                 return 1
+    //             } else {
+    //                 return -1
+    //             }
+    //         })})
+    //     }
+    // }
+
     render(){
         
         return (
@@ -62,6 +71,8 @@ class  SearchResultContainer extends Component {
                     handleInputChange={this.handleInputChange}
                 
                 />
+                <button className="btn btn-primary">sort a-z</button>
+                <button className="btn btn-primary">sort z-a</button>
                 <ResultDirectory results={this.state.results}/>
                 
             </div>
