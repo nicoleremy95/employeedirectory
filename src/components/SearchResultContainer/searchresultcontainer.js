@@ -9,7 +9,6 @@ class  SearchResultContainer extends Component {
     state={
         search: "",
         results: [],
-        sortDesc: true
     }
 
     componentDidMount(){
@@ -20,42 +19,64 @@ class  SearchResultContainer extends Component {
     searchUsers= query =>{
         API.search(query)
         .then(res=>this.setState({results:res.data.results}))
-      
         .catch(err=> console.log(err))
     }
 
     handleInputChange = event =>{
+        //takes in appropriate 
         const name = event.target.name;
         const value = event.target.value;
 
         this.setState({
             [name]: value
         })
+
     }
 
-    // sortAtoZ =()=>{
-    //     this.setState.sort()
-    // }
-    // sortZtoA = ()=>{
-       
-    //     this.setState.sort()
+    sortAtoZ =()=>{
+        let sorted = this.state.results;
+        sorted = sorted.sort((a,b)=>{
+            if(a.name.first>b.name.first){
+                return 1
+            } else{
+                return -1
+            }
+        })
+        this.setState({
+           results: sorted
+        })
         
-    // }
+    }
+    
 
-    render(){
+    sortZtoA =()=>{
+        let sorted = this.state.results;
+        sorted = sorted.sort((a,b)=>{
+            if(a.name.first>b.name.first){
+                return -1
+            } else{
+                return 1
+            }
+        })
+        this.setState({
+           results: sorted
+        })
         
+    }
+    
+
+    render(){ 
         return (
             <div>
                 <SearchForm
                     search={this.state.search}
                     handleInputChange={this.handleInputChange}
-                
                 />
                 <button className="btn btn-primary" 
-                // onClick={this.sortAtoZ()}
+                onClick={this.sortAtoZ}
                 >sort a-z</button>
                 <button className="btn btn-primary" 
-                // onClick={this.sortZtoA()}
+                onClick={this.sortZtoA}
                 >sort z-a</button>
                 <ResultDirectory results={this.state.results}/>
                 
