@@ -12,25 +12,30 @@ class  SearchResultContainer extends Component {
     }
 
     componentDidMount(){
-        this.searchUsers()
-        
+        this.searchUsers() 
     }
 
     searchUsers= query =>{
         API.search(query)
-        .then(res=>this.setState({results:res.data.results}))
+        .then(res=>this.setState({
+            results:res.data.results, 
+            filteredResults: res.data.results
+        }))
         .catch(err=> console.log(err))
     }
 
     handleInputChange = event =>{
-        //takes in appropriate 
         const name = event.target.name;
         const value = event.target.value;
 
-        this.setState({
-            [name]: value
+        const filtered = this.state.filteredResults.filter(user=>{
+            console.log(user)
+            return user.name.first.includes(value)
         })
 
+        this.setState({
+            results: filtered
+        })
     }
 
     sortAtoZ =()=>{
@@ -45,10 +50,8 @@ class  SearchResultContainer extends Component {
         this.setState({
            results: sorted
         })
-        
     }
     
-
     sortZtoA =()=>{
         let sorted = this.state.results;
         sorted = sorted.sort((a,b)=>{
@@ -60,11 +63,9 @@ class  SearchResultContainer extends Component {
         })
         this.setState({
            results: sorted
-        })
-        
+        })  
     }
     
-
     render(){ 
         return (
             <div>
@@ -79,10 +80,8 @@ class  SearchResultContainer extends Component {
                 onClick={this.sortZtoA}
                 >sort z-a</button>
                 <ResultDirectory results={this.state.results}/>
-                
             </div>
         )
-    }
-    
+    } 
 }
 export default SearchResultContainer;
