@@ -57,6 +57,6 @@ Please make sure to update tests as appropriate.
 1. [Github](https://github.com/nicoleremy95/employeedirectory)
 
 ### Link to Deployed Application
-1. [Employee Directory](https://ner-employee-directory.herokuapp.com/)
+1. [Employee Directory](https://serene-shelf-43817.herokuapp.com/)
     
      
